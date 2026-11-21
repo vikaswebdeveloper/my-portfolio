@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mental Health Signal — Case study — Kodeva</title>
+  <meta name="description" content="Student wellness analytics that estimates a 0–10 score from daily habits.">
+  <link rel="icon" href="../../assets/img/logo.svg">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body data-root="../../">
+<main>
+  <section class="page-head"><div class="container">
+    <div class="crumbs"><a href="../../">Home</a> / <a href="../">Projects</a> / Mental Health Signal</div>
+    <span class="eyebrow">AI · Machine learning</span>
+    <h1>Mental Health <span class="grad-text">Signal</span></h1>
+    <p class="lead">Student Wellness Analytics — a form-based tool that reads daily habits and estimates a wellness score from 0 to 10.</p>
+    <div class="actions"><a class="btn" href="https://mental-health-checker-1-5bb0.onrender.com" target="_blank" rel="noopener">Visit live app ↗</a><a class="btn ghost" href="../">← All projects</a></div>
+    <dl class="facts">
+      <div><dt>Type</dt><dd>ML-powered web app</dd></div>
+      <div><dt>Model</dt><dd>Random Forest · R² 0.92</dd></div>
+      <div><dt>Role</dt><dd>Design &amp; development</dd></div>
+      <div><dt>Stack</dt><dd>Python, scikit-learn, FastAPI</dd></div>
+      <div><dt>Hosting</dt><dd>Render</dd></div>
+      <div><dt>Status</dt><dd>Live</dd></div>
+    </dl>
+  </div></section>
+
+  <section><div class="container">
+    <a class="browser shot-link reveal" href="https://mental-health-checker-1-5bb0.onrender.com" target="_blank" rel="noopener" aria-label="Open Mental Health Signal live site">
+      <div class="bar"><i></i><i></i><i></i><span>mental-health-checker-1-5bb0.onrender.com</span></div>
+      <div class="shot-wrap"><img src="../../assets/img/projects/mental-health-signal-full.jpg" alt="Mental Health Signal home page screenshot" loading="lazy"><span class="visit">Visit live site ↗</span></div>
+    </a>
+    <p class="note">Screenshot of the live site. Click it to open the real thing.</p>
+  </div></section>
+
+  <section class="alt"><div class="container split">
+    <div>
+      <span class="eyebrow">Overview</span><h2>How it works</h2>
+      <p class="muted" style="margin-top:1rem">Users complete three short sections — profile, academic &amp; digital habits, and lifestyle &amp; stress — then press “Read my signal”. The model returns a score showing how habits, screen time and stress are trending. Under the hood, a Random Forest model built with scikit-learn (R² of 0.92) is served by a FastAPI backend with Pydantic input validation.</p>
+      <p class="note">Informational only. This is not a clinical assessment or diagnosis, and the app says so clearly to users.</p>
+    </div>
+    <div class="card"><h3>Inputs it reads</h3><ul class="list">
+      <li>Age, gender and country</li><li>Academic level, platform and purpose of use</li><li>Daily screen time and phone unlocks</li><li>Study hours, physical activity and sleep</li><li>Perceived stress level</li><li>Predictions in real time via a FastAPI backend</li>
+    </ul></div>
+  </div></section>
+
+  <section><div class="container"><div class="cta reveal"><h2>Have data you want to put to work?</h2><p>I build ML-backed tools with clear interfaces and responsible messaging.</p><a class="btn" href="../../contact/">Discuss your project →</a></div></div></section>
+</main>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
