@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Shop E-commerce Platform — Case study — Kodeva</title>
+  <meta name="description" content="Full-stack e-commerce platform with a customer storefront, admin panel, Razorpay payments and a security-focused test suite.">
+  <link rel="icon" href="../../assets/img/logo.svg">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body data-root="../../">
+<main>
+  <section class="page-head"><div class="container">
+    <div class="crumbs"><a href="../../">Home</a> / <a href="../">Projects</a> / Shop E-commerce</div>
+    <span class="eyebrow">Full-stack app</span>
+    <h1>Shop <span class="grad-text">E-commerce</span></h1>
+    <p class="lead">A full-stack store with a customer storefront and an admin panel, Razorpay payments and a security-focused test suite.</p>
+    <div class="actions">
+      <a class="btn" href="https://e-commerce-two-iota-20.vercel.app" target="_blank" rel="noopener">Visit live site ↗</a>
+      <a class="btn ghost" href="https://github.com/vikaswebdeveloper/E-Commerce" target="_blank" rel="noopener">View source on GitHub ↗</a>
+      <a class="btn ghost" href="../">← All projects</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Type</dt><dd>Full-stack e-commerce platform</dd></div>
+      <div><dt>Role</dt><dd>Design &amp; development</dd></div>
+      <div><dt>Frontend</dt><dd>React 18, Vite, Tailwind CSS</dd></div>
+      <div><dt>Backend</dt><dd>Node.js, Express 5, TypeScript</dd></div>
+      <div><dt>Data</dt><dd>PostgreSQL (Neon) with Prisma</dd></div>
+      <div><dt>Payments</dt><dd>Razorpay &amp; Cash on Delivery</dd></div>
+      <div><dt>Hosting</dt><dd>Vercel</dd></div>
+      <div><dt>Status</dt><dd>Live (demo store)</dd></div>
+    </dl>
+  </div></section>
+
+  <section><div class="container">
+    <a class="browser shot-link reveal" href="https://e-commerce-two-iota-20.vercel.app" target="_blank" rel="noopener" aria-label="Open the Shop live site">
+      <div class="bar"><i></i><i></i><i></i><span>e-commerce-two-iota-20.vercel.app</span></div>
+      <div class="shot-wrap"><img src="../../assets/img/projects/e-commerce-full.jpg" alt="Shop e-commerce home page screenshot" loading="lazy"><span class="visit">Visit live site ↗</span></div>
+    </a>
+    <p class="note">Screenshot of the live site. Click it to open the real thing.</p>
+  </div></section>
+
+  <section class="alt"><div class="container split">
+    <div>
+      <span class="eyebrow">Overview</span><h2>The problem &amp; the solution</h2>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Problem.</strong> An online store has to get the details right: correct prices, accurate stock, verified payments and safe handling of customer data. A pretty storefront isn't enough.</p>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Solution.</strong> Shop is a complete store with a customer storefront and an admin panel. Prices are computed on the server, Razorpay payments are verified by signature, stock is protected against overselling, and an automated test suite checks the security-critical paths.</p>
+      <p class="note">This is a demo store with sample products. It shows the complete flow, from browsing and checkout to order management.</p>
+    </div>
+    <div class="card"><h3>Highlights</h3><ul class="list">
+      <li>Customer storefront and admin panel in one platform</li><li>Razorpay checkout with server-verified payments, plus Cash on Delivery</li><li>Product images stored on Backblaze B2</li><li>Coupons, wishlist, reviews and order tracking</li><li>Audit log of every admin action</li><li>Security-focused automated tests (Vitest and Supertest)</li>
+    </ul></div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">What's inside</span><h2>Built for shoppers and for store owners</h2></div>
+    <div class="grid">
+      <div class="card hover feat"><div class="icon">🛍️</div><h3>Customer storefront</h3>
+        <ul class="list"><li>Sign up, log in and reset passwords</li><li>Live search suggestions and filters by category, brand, price, rating and stock</li><li>Product pages with image gallery and verified-purchase reviews</li><li>Wishlist, cart with stock checks and saved addresses</li><li>Coupons and checkout with Razorpay or Cash on Delivery</li><li>Order history, tracking, cancel and refund</li></ul></div>
+      <div class="card hover feat"><div class="icon">📊</div><h3>Admin panel</h3>
+        <ul class="list"><li>Dashboard with revenue, orders, a 7-day chart and low-stock alerts</li><li>Product management with image upload</li><li>Category and coupon management</li><li>Order management with a validated status flow</li><li>Customer list with suspend and reactivate</li><li>Review moderation and a full audit log</li></ul></div>
+      <div class="card hover feat"><div class="icon">🔐</div><h3>Security &amp; testing</h3>
+        <ul class="list"><li>bcrypt password hashing, strong-password policy and login lockout</li><li>Razorpay HMAC-SHA256 signature checks, with a webhook as a second confirmation</li><li>Prices and order totals computed on the server</li><li>Uploads verified by file signature, with size limits</li><li>Rate limiting, CSRF origin checks and security headers</li><li>Tests for auth, injection, XSS, payments and stock races</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="alt"><div class="container">
+    <div class="section-head"><span class="eyebrow">Tech stack</span><h2>What it's built with</h2></div>
+    <div class="tags" style="margin:0"><span class="tag">React 18</span><span class="tag">Vite</span><span class="tag">Tailwind CSS</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">Express 5</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">Neon</span><span class="tag">Backblaze B2</span><span class="tag">Razorpay</span><span class="tag">Vitest</span><span class="tag">Supertest</span><span class="tag">Vercel</span></div>
+  </div></section>
+
+  <section><div class="container"><div class="cta reveal"><h2>Need an online store?</h2><p>I build secure, payment-ready stores with an admin panel, so you can manage products and orders yourself.</p><a class="btn" href="../../contact/">Discuss your project →</a></div></div></section>
+</main>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

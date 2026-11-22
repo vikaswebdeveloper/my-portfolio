@@ -14,8 +14,10 @@ const SITE = {
 
 // Links are clean folder URLs ("about/" = about/index.html); "" means Home.
 const PROJECTS = [
+  ["Shop E-commerce", "projects/e-commerce/"],
   ["GoRide", "projects/goride/"],
   ["RAG Q&A", "projects/rag-qa/"],
+  ["LearnHub", "projects/learnhub/"],
   ["Mental Health Signal", "projects/mental-health-signal/"],
   ["Global Production & Distribution", "projects/global-production/"],
   ["Motia Enterprises", "projects/motia-enterprises/"],

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LearnHub AI Course Platform — Case study — Kodeva</title>
+  <meta name="description" content="Learning platform where you watch lectures and ask an AI tutor about any moment. Answers link to the exact timestamp in the video.">
+  <link rel="icon" href="../../assets/img/logo.svg">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body data-root="../../">
+<main>
+  <section class="page-head"><div class="container">
+    <div class="crumbs"><a href="../../">Home</a> / <a href="../">Projects</a> / LearnHub</div>
+    <span class="eyebrow">AI · Learning platform</span>
+    <h1>Learn<span class="grad-text">Hub</span></h1>
+    <p class="lead">Watch lectures and ask an AI tutor about any moment. Every answer links back to the exact timestamp in the video.</p>
+    <div class="actions">
+      <a class="btn" href="https://course-with-ai.vercel.app" target="_blank" rel="noopener">Visit live site ↗</a>
+      <a class="btn ghost" href="https://github.com/vikaswebdeveloper/Course-with-AI" target="_blank" rel="noopener">View source on GitHub ↗</a>
+      <a class="btn ghost" href="../">← All projects</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Type</dt><dd>AI-powered course platform</dd></div>
+      <div><dt>Role</dt><dd>Design &amp; development</dd></div>
+      <div><dt>Backend</dt><dd>Python, FastAPI</dd></div>
+      <div><dt>Data</dt><dd>PostgreSQL with pgvector, Neo4j</dd></div>
+      <div><dt>AI</dt><dd>Retrieval (RAG), BGE-M3 embeddings, LiteLLM</dd></div>
+      <div><dt>Hosting</dt><dd>Vercel, Docker, Hugging Face</dd></div>
+      <div><dt>Status</dt><dd>Live</dd></div>
+    </dl>
+  </div></section>
+
+  <section><div class="container">
+    <a class="browser shot-link reveal" href="https://course-with-ai.vercel.app" target="_blank" rel="noopener" aria-label="Open the LearnHub live site">
+      <div class="bar"><i></i><i></i><i></i><span>course-with-ai.vercel.app</span></div>
+      <div class="shot-wrap"><img src="../../assets/img/projects/learnhub-full.jpg" alt="LearnHub home page screenshot" loading="lazy"><span class="visit">Visit live site ↗</span></div>
+    </a>
+    <p class="note">Screenshot of the live site. Click it to open the real thing.</p>
+  </div></section>
+
+  <section class="alt"><div class="container split">
+    <div>
+      <span class="eyebrow">Overview</span><h2>The problem &amp; the solution</h2>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Problem.</strong> Long video lectures are hard to search. When something is unclear, learners scrub back and forth or leave the video to look for an explanation elsewhere.</p>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Solution.</strong> LearnHub lets people watch lectures like on a video site and ask a tutor about what was said or shown on a slide. The answer comes from the lecture itself and links to the exact minute, so it can be checked.</p>
+      <p class="note">Lectures are shown under their original licences, for example MIT 6.0001 from MIT OpenCourseWare.</p>
+    </div>
+    <div class="card"><h3>Highlights</h3><ul class="list">
+      <li>Courses organised in folders, with free and paid options</li><li>Ask the tutor about any moment in a lecture</li><li>Answers link to the source timestamp</li><li>Search across the whole library for the minute that explains a topic</li><li>Docker Compose setup and automated tests</li>
+    </ul></div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">What's inside</span><h2>Built for learners and course owners</h2></div>
+    <div class="grid">
+      <div class="card hover feat"><div class="icon">🎓</div><h3>Learning</h3>
+        <ul class="list"><li>Library to browse courses and lectures</li><li>Video player with timestamp jumps</li><li>A "my learning" page for your courses</li><li>Pricing and free courses</li></ul></div>
+      <div class="card hover feat"><div class="icon">🤖</div><h3>AI tutor</h3>
+        <ul class="list"><li>Questions about speech or on-screen slides</li><li>Answers drawn from the lecture content</li><li>Source timestamp with every answer</li><li>Search across all lectures</li></ul></div>
+      <div class="card hover feat"><div class="icon">⚙️</div><h3>Ingestion pipeline</h3>
+        <ul class="list"><li>Lecture content turned into searchable chunks, with OCR for slides</li><li>Embeddings stored in PostgreSQL with pgvector</li><li>Neo4j for relationships between content</li><li>Deployable with Docker Compose or Hugging Face</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="alt"><div class="container">
+    <div class="section-head"><span class="eyebrow">Tech stack</span><h2>What it's built with</h2></div>
+    <div class="tags" style="margin:0"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">PostgreSQL</span><span class="tag">pgvector</span><span class="tag">Neo4j</span><span class="tag">RAG</span><span class="tag">BGE-M3</span><span class="tag">LiteLLM</span><span class="tag">Tesseract OCR</span><span class="tag">Docker</span><span class="tag">pytest</span><span class="tag">Vercel</span></div>
+  </div></section>
+
+  <section><div class="container"><div class="cta reveal"><h2>Need an AI-powered product?</h2><p>I build tools that answer from your own content, with sources, so people can trust what they read.</p><a class="btn" href="../../contact/">Discuss your project →</a></div></div></section>
+</main>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
