@@ -10,6 +10,7 @@ const SITE = {
   linkedin: "https://linkedin.com/in/vikasvpp",
   phone: "+91 73032 88076",
   location: "Delhi, India · Working worldwide",
+  web3formsKey: "201a05b9-3fc3-4f71-b2be-e0d5d6ee208f", // get a free key at web3forms.com
 };
 
 // Links are clean folder URLs ("about/" = about/index.html); "" means Home.
@@ -246,14 +247,101 @@ document.querySelectorAll(".chip[data-filter]").forEach((chip) =>
 const wanted = new URLSearchParams(location.search).get("type");
 if (wanted) document.querySelector(`.chip[data-filter="${CSS.escape(wanted)}"]`)?.click();
 
-/* ---------- Contact form -> opens email client (no backend) ---------- */
+/* ---------- Themed dropdowns (native <select> stays hidden and keeps the value) ---------- */
+document.querySelectorAll("form select").forEach((sel, n) => {
+  const wrap = document.createElement("div");
+  wrap.className = "cselect";
+  const btn = document.createElement("button");
+  btn.type = "button"; btn.className = "cselect-btn";
+  btn.setAttribute("aria-haspopup", "listbox"); btn.setAttribute("aria-expanded", "false");
+  const text = document.createElement("span");
+  btn.append(text);
+  btn.insertAdjacentHTML("beforeend", '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg>');
+  const list = document.createElement("ul");
+  list.className = "cselect-list"; list.setAttribute("role", "listbox"); list.id = "cselect-" + n;
+  btn.setAttribute("aria-controls", list.id);
+  const opts = [...sel.options].map((o, i) => {
+    const li = document.createElement("li");
+    li.className = "cselect-opt"; li.setAttribute("role", "option"); li.textContent = o.textContent;
+    li.onmousedown = (e) => e.preventDefault();
+    li.onclick = (e) => { e.preventDefault(); choose(i); close(); btn.focus(); }; // preventDefault: stops the parent <label> re-clicking the button
+    li.onmouseenter = () => highlight(i, false);
+    list.append(li);
+    return li;
+  });
+  let active = sel.selectedIndex;
+  const sync = () => {
+    text.textContent = sel.options[sel.selectedIndex]?.textContent || "";
+    opts.forEach((li, i) => li.setAttribute("aria-selected", i === sel.selectedIndex));
+  };
+  const highlight = (i, scroll = true) => {
+    active = Math.max(0, Math.min(opts.length - 1, i));
+    opts.forEach((li, j) => li.classList.toggle("active", j === active));
+    if (scroll) opts[active].scrollIntoView({ block: "nearest" });
+  };
+  const choose = (i) => { sel.selectedIndex = i; sync(); sel.dispatchEvent(new Event("change", { bubbles: true })); };
+  const isOpen = () => wrap.classList.contains("open");
+  const open = () => {
+    document.querySelectorAll(".cselect.open").forEach((c) => c !== wrap && c.classList.remove("open"));
+    const r = btn.getBoundingClientRect();
+    wrap.classList.toggle("up", innerHeight - r.bottom < 280 && r.top > innerHeight - r.bottom);
+    wrap.classList.add("open"); btn.setAttribute("aria-expanded", "true"); highlight(sel.selectedIndex);
+  };
+  const close = () => { wrap.classList.remove("open"); btn.setAttribute("aria-expanded", "false"); };
+  btn.onclick = () => (isOpen() ? close() : open());
+  btn.onkeydown = (e) => {
+    const k = e.key;
+    if (k === "Escape" && isOpen()) { e.preventDefault(); close(); }
+    else if (k === "ArrowDown" || k === "ArrowUp") { e.preventDefault(); if (!isOpen()) open(); else highlight(active + (k === "ArrowDown" ? 1 : -1)); }
+    else if (k === "Home" || k === "End") { if (isOpen()) { e.preventDefault(); highlight(k === "Home" ? 0 : opts.length - 1); } }
+    else if ((k === "Enter" || k === " ") && isOpen()) { e.preventDefault(); choose(active); close(); }
+    else if (k === "Tab") close();
+    else if (k.length === 1 && /\S/.test(k)) { // type-ahead
+      const i = opts.findIndex((li) => li.textContent.trim().toLowerCase().startsWith(k.toLowerCase()));
+      if (i > -1) { if (isOpen()) highlight(i); else choose(i); }
+    }
+  };
+  document.addEventListener("click", (e) => { if (!wrap.contains(e.target)) close(); });
+  sel.form.addEventListener("reset", () => setTimeout(sync));
+  wrap.append(btn, list);
+  sel.before(wrap);
+  sel.style.display = "none";
+  sync();
+});
+
+/* ---------- Contact form -> Web3Forms (falls back to email app) ---------- */
 const form = document.getElementById("contact-form");
 if (form) {
-  form.onsubmit = (e) => {
-    e.preventDefault();
-    const d = new FormData(form);
+  const status = document.getElementById("form-status");
+  const btn = form.querySelector("button[type=submit]");
+  const say = (msg, ok) => { status.textContent = msg; status.style.color = ok ? "#16a34a" : "#dc2626"; };
+  const openMailApp = (d) => {
     const body = `${d.get("message")}\n\nService: ${d.get("service")}\nBudget: ${d.get("budget")}\n— ${d.get("name")} (${d.get("email")})`;
     location.href = `mailto:${SITE.email}?subject=${encodeURIComponent("Project enquiry from " + d.get("name"))}&body=${encodeURIComponent(body)}`;
+  };
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    const d = new FormData(form);
+    if (d.get("botcheck")) return; // honeypot: bots fill this hidden field
+    if (!SITE.web3formsKey || SITE.web3formsKey.startsWith("PASTE")) return openMailApp(d);
+    const label = btn.textContent;
+    btn.disabled = true; btn.textContent = "Sending…"; say("", true);
+    try {
+      d.append("access_key", SITE.web3formsKey);
+      d.append("subject", "Project enquiry from " + d.get("name"));
+      d.append("from_name", SITE.brand + " website");
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST", headers: { Accept: "application/json" }, body: d,
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) throw new Error(data.message || "Request failed");
+      form.reset();
+      say("Thanks! Your message is on its way. I'll reply within 24 hours.", true);
+    } catch (err) {
+      say("Sorry, that didn't send. Please try again or email " + SITE.email + ".", false);
+    } finally {
+      btn.disabled = false; btn.textContent = label;
+    }
   };
 }
 

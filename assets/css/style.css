@@ -17,16 +17,16 @@
   color-scheme: light;
 }
 :root[data-theme="dark"] {
-  --bg: #080a12;
-  --bg-alt: #0d1019;
-  --surface: #11141f;
-  --text: #eef0fa;
-  --muted: #9096ad;
-  --border: #1d2130;
-  --accent: #8b80ff;
+  --bg: #0f1220;
+  --bg-alt: #151928;
+  --surface: #1b1f32;
+  --text: #eff1fb;
+  --muted: #9ca3bb;
+  --border: #292f46;
+  --accent: #8e85ff;
   --accent-2: #2ad4f0;
-  --accent-soft: #1a1740;
-  --shadow: 0 10px 30px -14px rgba(0, 0, 0, .8);
+  --accent-soft: #232153;
+  --shadow: 0 10px 30px -14px rgba(0, 0, 0, .65);
   color-scheme: dark;
 }
 
@@ -324,6 +324,28 @@ label { font-size: .88rem; font-weight: 600; display: grid; gap: .4rem; }
 input, textarea, select { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: .8rem 1rem; transition: border-color .2s, box-shadow .2s; }
 input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
 textarea { min-height: 150px; resize: vertical; }
+
+/* Custom themed dropdown (replaces the native select popup, which can't be styled) */
+.cselect { position: relative; }
+.cselect-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: .75rem; text-align: left; cursor: pointer;
+  font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: .8rem 1rem;
+  transition: border-color .2s, box-shadow .2s; }
+.cselect-btn:hover { border-color: color-mix(in srgb, var(--accent) 50%, var(--border)); }
+.cselect-btn:focus-visible, .cselect.open .cselect-btn { outline: none; border-color: var(--accent); box-shadow: 0 0 0 4px var(--accent-soft); }
+.cselect-btn svg { flex: none; width: 18px; height: 18px; color: var(--muted); transition: transform .3s var(--ease), color .2s; }
+.cselect.open .cselect-btn svg { transform: rotate(180deg); color: var(--accent); }
+.cselect-list { position: absolute; z-index: 30; left: 0; right: 0; top: calc(100% + 6px); margin: 0; padding: .35rem; list-style: none;
+  max-height: 260px; overflow-y: auto; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; box-shadow: var(--shadow), 0 24px 48px -20px rgba(40, 30, 120, .3);
+  opacity: 0; visibility: hidden; transform: translateY(-6px) scale(.98); transform-origin: top; transition: opacity .18s, transform .22s var(--ease), visibility .18s; }
+.cselect.open .cselect-list { opacity: 1; visibility: visible; transform: none; }
+.cselect.up .cselect-list { top: auto; bottom: calc(100% + 6px); transform-origin: bottom; }
+.cselect-opt { display: flex; align-items: center; justify-content: space-between; gap: .5rem; padding: .6rem .8rem; border-radius: 9px; cursor: pointer; font-size: .95rem; font-weight: 500; color: var(--text); }
+.cselect-opt { transition: background .15s, color .15s, padding-left .2s var(--ease); }
+.cselect-opt:hover, .cselect-opt.active { background: var(--accent-soft); color: var(--accent); }
+.cselect-opt:hover { padding-left: 1rem; }
+.cselect-opt[aria-selected="true"] { font-weight: 650; color: var(--accent); }
+.cselect-opt[aria-selected="true"]::after { content: "✓"; font-size: .85rem; }
+@media (prefers-reduced-motion: reduce) { .cselect-list, .cselect-btn svg { transition: none; } }
 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 @media (max-width: 600px) { .row { grid-template-columns: 1fr; } }
 
@@ -440,6 +462,7 @@ a.card.tilt:hover { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotat
 .chip-float { position: absolute; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); padding: .5rem .95rem; border-radius: 999px; font-size: .85rem; font-weight: 600; animation: bob 6s ease-in-out infinite; white-space: nowrap; }
 .chip-float.c1 { top: 8%; left: -12%; }
 .chip-float.c2 { bottom: 9%; right: -8%; animation-delay: -3s; }
+.about-hero { overflow-x: clip; }
 @media (max-width: 860px) { .about-hero { grid-template-columns: 1fr; } .portrait { order: -1; width: min(280px, 80%); } .chip-float.c1 { left: -6%; } .chip-float.c2 { right: -4%; } }
 .timeline .tags { margin-top: .8rem; }
 
