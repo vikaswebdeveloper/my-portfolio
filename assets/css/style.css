@@ -462,7 +462,7 @@ a.card.tilt:hover { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotat
 .chip-float { position: absolute; background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); padding: .5rem .95rem; border-radius: 999px; font-size: .85rem; font-weight: 600; animation: bob 6s ease-in-out infinite; white-space: nowrap; }
 .chip-float.c1 { top: 8%; left: -12%; }
 .chip-float.c2 { bottom: 9%; right: -8%; animation-delay: -3s; }
-.about-hero { overflow-x: clip; }
+main { overflow-x: clip; } /* stops floating chips causing sideways scroll, clipped at the screen edge so no glow is cut */
 @media (max-width: 860px) { .about-hero { grid-template-columns: 1fr; } .portrait { order: -1; width: min(280px, 80%); } .chip-float.c1 { left: -6%; } .chip-float.c2 { right: -4%; } }
 .timeline .tags { margin-top: .8rem; }
 
@@ -524,3 +524,37 @@ footer.site { margin-top: 0; }
 .brief dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); margin-top: .7rem; }
 .brief dd { margin: 0; font-size: .95rem; }
 .brief dd .list { margin: .2rem 0 0; }
+
+/* ============ Design polish ============ */
+/* "New" badge on project covers */
+.cover .new { position: absolute; top: .9rem; left: .9rem; z-index: 2; display: inline-flex; align-items: center; gap: .4rem; font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  color: #fff; background: var(--grad); padding: .28rem .7rem; border-radius: 999px; box-shadow: 0 8px 20px -8px var(--accent); }
+.cover .new::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #fff; animation: pulse 2s infinite; }
+/* Light sweep over project covers on hover */
+.cover::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(110deg, transparent 35%, rgba(255, 255, 255, .22) 50%, transparent 65%);
+  transform: translateX(-130%); transition: transform .9s var(--ease); }
+.project:hover .cover::after { transform: translateX(130%); }
+/* Stats and tags respond to the pointer */
+.stat { transition: transform .35s var(--ease), border-color .25s, box-shadow .35s; }
+.stat:hover { transform: translateY(-4px); border-color: color-mix(in srgb, var(--accent) 55%, var(--border)); box-shadow: var(--shadow); }
+.tag { transition: transform .25s var(--ease), background .25s, color .25s; }
+.tag:hover { transform: translateY(-2px); background: var(--accent); color: #fff; }
+/* Gradient accent line before every eyebrow label */
+.eyebrow::before { content: ""; display: inline-block; width: 1.4rem; height: 2px; margin-right: .6rem; vertical-align: middle; border-radius: 2px; background: var(--grad); transition: width .5s var(--ease); }
+.section-head:hover .eyebrow::before, .page-head:hover .eyebrow::before { width: 2.4rem; }
+/* Soft glow behind every page heading */
+.page-head { position: relative; overflow-x: clip; }
+.page-head::before { content: ""; position: absolute; width: 520px; height: 520px; top: -260px; right: -140px; z-index: -1; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 68%); animation: float 14s ease-in-out infinite; }
+.page-head::after { content: ""; position: absolute; width: 420px; height: 420px; bottom: -60px; left: -160px; z-index: -1; pointer-events: none; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 16%, transparent), transparent 68%); animation: float 18s ease-in-out infinite reverse; }
+/* Buttons: gentle press feedback */
+.btn:active { transform: translateY(0) scale(.97); }
+/* Case-study stat strip */
+.stats.compact { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+.stats.compact .stat strong { font-size: 1.9rem; }
+/* Keyboard focus ring everywhere */
+a:focus-visible, button:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+@media (prefers-reduced-motion: reduce) { .page-head::before, .page-head::after, .cover .new::before { animation: none; } .cover::after { transition: none; } }
+/* About page: keep the floating chips fully on screen on mid-size screens */
+@media (min-width: 861px) and (max-width: 1180px) { .chip-float.c1 { left: -4%; } .chip-float.c2 { right: 1%; } }

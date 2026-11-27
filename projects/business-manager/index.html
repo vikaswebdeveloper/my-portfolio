@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Business Manager — Transport &amp; Trading Accounts — Case study — Kodeva</title>
+  <meta name="description" content="A business management web app for transport and trading companies: trips, stock, payments, cheques, ledgers and profit and loss, with roles, Excel export and an installable PWA.">
+  <link rel="icon" href="../../assets/img/logo.svg">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body data-root="../../">
+<main>
+  <section class="page-head"><div class="container">
+    <div class="crumbs"><a href="../../">Home</a> / <a href="../">Projects</a> / Business Manager</div>
+    <span class="eyebrow">Full-stack app · Business software</span>
+    <h1>Business <span class="grad-text">Manager</span></h1>
+    <p class="lead">Enter the day's trips once and the accounts do themselves. A management system for a transport and trading business that turns purchases and deliveries into stock, balances, payments and profit.</p>
+    <div class="actions">
+      <a class="btn" href="https://business-management-lemon.vercel.app" target="_blank" rel="noopener">Visit live site ↗</a>
+      <a class="btn ghost" href="https://github.com/vikaswebdeveloper/business-management" target="_blank" rel="noopener">View source on GitHub ↗</a>
+      <a class="btn ghost" href="../">← All projects</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Type</dt><dd>Business management web app</dd></div>
+      <div><dt>Role</dt><dd>Design &amp; development</dd></div>
+      <div><dt>Frontend</dt><dd>Next.js 16, React 19, Tailwind CSS 4, shadcn/ui</dd></div>
+      <div><dt>Charts</dt><dd>Recharts</dd></div>
+      <div><dt>Data</dt><dd>PostgreSQL (Neon) with Prisma 7</dd></div>
+      <div><dt>Reports</dt><dd>Excel export, print and PDF</dd></div>
+      <div><dt>Hosting</dt><dd>Vercel</dd></div>
+      <div><dt>Status</dt><dd>Live (sample data)</dd></div>
+    </dl>
+  </div></section>
+
+  <section style="padding-top:0"><div class="container">
+    <div class="stats compact">
+      <div class="stat"><strong data-count="15">0</strong><span>Panels, from stock to profit and loss</span></div>
+      <div class="stat"><strong data-count="2">0</strong><span>Roles: owner and staff</span></div>
+      <div class="stat"><strong data-count="100" data-suffix="%">0</strong><span>Of changes written to an activity log</span></div>
+      <div class="stat"><strong data-count="17">0</strong><span>Test files</span></div>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <a class="browser shot-link reveal" href="https://business-management-lemon.vercel.app" target="_blank" rel="noopener" aria-label="Open the Business Manager live site">
+      <div class="bar"><i></i><i></i><i></i><span>business-management-lemon.vercel.app</span></div>
+      <div class="shot-wrap"><img src="../../assets/img/projects/business-manager-full.jpg" alt="Business Manager home page with a dashboard preview" loading="lazy"><span class="visit">Visit live site ↗</span></div>
+    </a>
+    <p class="note">Screenshot of the live site. Click it to open the real thing.</p>
+  </div></section>
+
+  <section class="alt"><div class="container split">
+    <div>
+      <span class="eyebrow">Overview</span><h2>The problem &amp; the solution</h2>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Problem.</strong> A transport and trading business runs on trucks, drivers, bills and cheques. The accounts usually live in notebooks and spreadsheets, so balances are slow to work out and mistakes appear at month end.</p>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Solution.</strong> Prices live in one fixed price list, so each trip is just: pick the truck, the route, the product and the quantity. The system calculates amounts, stock, balances and profit. Every list, payment mode and category is editable in Settings, so the same app fits other businesses.</p>
+      <p class="note">Built as a template for a transport and trading business in Surat, Gujarat. The live site shows sample data.</p>
+    </div>
+    <div class="card"><h3>Highlights</h3><ul class="list">
+      <li>One entry per trip, with truck, driver and route on every purchase and delivery</li>
+      <li>Fixed prices that fill in automatically and can't be mistyped</li>
+      <li>Live stock, with a warning before sending more than you have</li>
+      <li>A khata (ledger) for every client and supplier, with statements</li>
+      <li>Cheque tracking, where a bounced cheque never counts</li>
+      <li>Dues ageing, daily and monthly summary, and profit and loss</li>
+      <li>Excel export, print and save as PDF, and WhatsApp reminders</li>
+      <li>Installable on phone and desktop (PWA), with light and dark theme</li>
+    </ul></div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">How it works</span><h2>From a truck leaving to profit at month end</h2></div>
+    <div class="steps">
+      <div class="step" data-n="01"><div class="num">🚚</div><h3>Record the trip</h3><p>Choose the truck, driver, route, products and quantity. Prices fill in from the price list.</p></div>
+      <div class="step" data-n="02"><div class="num">📦</div><h3>Stock updates</h3><p>Purchases add stock and deliveries remove it. Low stock is flagged on the dashboard.</p></div>
+      <div class="step" data-n="03"><div class="num">💰</div><h3>Track payments</h3><p>Cash, UPI, bank or cheque, paid now or later. Balances update in every client's khata.</p></div>
+      <div class="step" data-n="04"><div class="num">📊</div><h3>See the profit</h3><p>Daily summaries, dues ageing and a profit and loss statement are ready when you are.</p></div>
+    </div>
+  </div></section>
+
+  <section class="alt"><div class="container">
+    <div class="section-head"><span class="eyebrow">What's inside</span><h2>Everything the business needs in one place</h2></div>
+    <div class="grid">
+      <div class="card hover feat"><div class="icon">🧾</div><h3>Daily work</h3>
+        <ul class="list"><li>Product incoming: purchase bills with several items and freight</li><li>Product outgoing: delivery challans and invoices</li><li>Trucks and routes, with trips and value per truck</li><li>Returns, damaged goods and stock adjustments</li><li>Daily expenses by category</li></ul></div>
+      <div class="card hover feat"><div class="icon">📒</div><h3>Accounts</h3>
+        <ul class="list"><li>Ledger (khata) for every client and supplier</li><li>Payments by mode and terms, with cheque tracking</li><li>Dues ageing: 1-30, 31-60, 61-90 and 90+ days</li><li>Staff salaries, wages, advances and bonuses</li><li>Profit and loss with a monthly breakdown</li></ul></div>
+      <div class="card hover feat"><div class="icon">🎛️</div><h3>Control &amp; reports</h3>
+        <ul class="list"><li>Dashboard with KPIs compared to the last period</li><li>Search and filters saved in the URL, with pagination</li><li>Excel export of every list and report</li><li>Activity log: who changed what, with old and new values</li><li>Settings for lists, items, clients, suppliers and users</li></ul></div>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">Security &amp; roles</span><h2>Owner and staff see different things</h2></div>
+    <div class="grid">
+      <div class="card hover feat"><div class="icon">🔑</div><h3>Login &amp; roles</h3>
+        <ul class="list"><li>No public sign-up: the owner creates users</li><li>Staff can add entries; only the owner can edit or delete</li><li>Dashboard, ledger, profit and loss and settings are owner-only</li><li>scrypt password hashing and account lockout</li></ul></div>
+      <div class="card hover feat"><div class="icon">🛡️</div><h3>Hardened by default</h3>
+        <ul class="list"><li>Content Security Policy, HSTS and anti-framing headers</li><li>Random session tokens, stored only as hashes</li><li>Server-side checks on every page and action</li><li>Excel exports neutralise formula injection</li></ul></div>
+      <div class="card hover feat"><div class="icon">🧪</div><h3>Tested</h3>
+        <ul class="list"><li>Unit tests for money, ageing and reports</li><li>Playwright end-to-end tests for entries, filters and exports</li><li>Mobile, layout and PWA checks</li><li>Security tests for auth and permissions</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="alt"><div class="container">
+    <div class="section-head"><span class="eyebrow">Screens</span><h2>A look around</h2></div>
+    <div class="grid two">
+      <a class="browser shot-link reveal" href="https://business-management-lemon.vercel.app/features" target="_blank" rel="noopener" style="display:block" aria-label="Open the features page"><div class="bar"><i></i><i></i><i></i><span>/features</span></div><div class="shot-wrap"><img src="../../assets/img/projects/business-manager-features.jpg" alt="Business Manager features page" loading="lazy"><span class="visit">Open ↗</span></div></a>
+      <a class="browser shot-link reveal" href="https://business-management-lemon.vercel.app/security" target="_blank" rel="noopener" style="display:block" aria-label="Open the security page"><div class="bar"><i></i><i></i><i></i><span>/security</span></div><div class="shot-wrap"><img src="../../assets/img/projects/business-manager-security.jpg" alt="Business Manager security page" loading="lazy"><span class="visit">Open ↗</span></div></a>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">Tech stack</span><h2>What it's built with</h2></div>
+    <div class="tags" style="margin:0"><span class="tag">Next.js 16</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">shadcn/ui</span><span class="tag">Recharts</span><span class="tag">Prisma 7</span><span class="tag">PostgreSQL</span><span class="tag">Neon</span><span class="tag">ExcelJS</span><span class="tag">PWA</span><span class="tag">Vitest</span><span class="tag">Playwright</span><span class="tag">Vercel</span></div>
+  </div></section>
+
+  <section><div class="container"><div class="cta reveal"><h2>Need software for your business?</h2><p>I build custom accounting, stock and operations tools that replace spreadsheets and paper registers.</p><a class="btn" href="../../contact/">Discuss your project →</a></div></div></section>
+</main>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>

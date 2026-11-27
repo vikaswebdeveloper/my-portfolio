@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Slotly — Appointment Booking System — Case study — Kodeva</title>
+  <meta name="description" content="A full-stack appointment booking system for clinics, sports grounds, salons and studios: live availability, Razorpay payments, ticket-based cancellations with refunds, and an owner dashboard.">
+  <link rel="icon" href="../../assets/img/logo.svg">
+  <link rel="stylesheet" href="../../assets/css/style.css">
+</head>
+<body data-root="../../">
+<main>
+  <section class="page-head"><div class="container">
+    <div class="crumbs"><a href="../../">Home</a> / <a href="../">Projects</a> / Slotly</div>
+    <span class="eyebrow">Full-stack app · Booking</span>
+    <h1>Slotly <span class="grad-text">Appointments</span></h1>
+    <p class="lead">A booking system for any business that rents out time: clinics, sports grounds, salons, studios and meeting rooms. Customers see live availability and pay first. The owner runs everything from one dashboard.</p>
+    <div class="actions">
+      <a class="btn" href="https://appointment-system-topaz.vercel.app" target="_blank" rel="noopener">Visit live site ↗</a>
+      <a class="btn ghost" href="https://github.com/vikaswebdeveloper/Appointment-system" target="_blank" rel="noopener">View source on GitHub ↗</a>
+      <a class="btn ghost" href="../">← All projects</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Type</dt><dd>Full-stack booking platform</dd></div>
+      <div><dt>Role</dt><dd>Design &amp; development</dd></div>
+      <div><dt>Frontend</dt><dd>Next.js 15, React 19, Tailwind CSS 4, Framer Motion</dd></div>
+      <div><dt>Backend</dt><dd>Next.js API routes, TypeScript, Zod</dd></div>
+      <div><dt>Data</dt><dd>PostgreSQL with Prisma</dd></div>
+      <div><dt>Payments</dt><dd>Razorpay, with signed webhooks</dd></div>
+      <div><dt>Hosting</dt><dd>Vercel</dd></div>
+      <div><dt>Status</dt><dd>Live (demo data)</dd></div>
+    </dl>
+  </div></section>
+
+  <section style="padding-top:0"><div class="container">
+    <div class="stats compact">
+      <div class="stat"><strong data-count="10" data-suffix=" min">0</strong><span>Slot held while paying</span></div>
+      <div class="stat"><strong data-count="70" data-suffix="%">0</strong><span>Refund when cancelled early</span></div>
+      <div class="stat"><strong data-count="10">0</strong><span>Database models</span></div>
+      <div class="stat"><strong data-count="20">0</strong><span>Test files</span></div>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <a class="browser shot-link reveal" href="https://appointment-system-topaz.vercel.app" target="_blank" rel="noopener" aria-label="Open the Slotly live site">
+      <div class="bar"><i></i><i></i><i></i><span>appointment-system-topaz.vercel.app</span></div>
+      <div class="shot-wrap"><img src="../../assets/img/projects/slotly-full.jpg" alt="Slotly home page with the booking widget" loading="lazy"><span class="visit">Visit live site ↗</span></div>
+    </a>
+    <p class="note">Screenshot of the live site. Click it to open the real thing.</p>
+  </div></section>
+
+  <section class="alt"><div class="container split">
+    <div>
+      <span class="eyebrow">Overview</span><h2>The problem &amp; the solution</h2>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Problem.</strong> Small businesses still take bookings by phone and chat. Slots get double-booked, people don't turn up, and nobody is sure who has paid or who asked for a refund.</p>
+      <p class="muted" style="margin-top:1rem"><strong style="color:var(--text)">Solution.</strong> Slotly shows real availability, holds the slot for ten minutes while the customer pays through Razorpay, and confirms the booking only after the server has verified the payment. Cancellations go through a ticket the owner approves, with the refund worked out automatically.</p>
+      <p class="note">Slotly runs with demo places and sample data. It shows the complete flow, from browsing to payment, cancellation and refund.</p>
+    </div>
+    <div class="card"><h3>Highlights</h3><ul class="list">
+      <li>Live availability that updates on every open page (Server-Sent Events)</li>
+      <li>Pay first: bookings are confirmed only after a verified Razorpay payment</li>
+      <li>A slot is held for 10 minutes while the customer pays</li>
+      <li>Double-booking prevented by a database-level unique rule</li>
+      <li>Ticket-based cancellation with an automatic 70% or 50% refund</li>
+      <li>Email confirmations through an outbox with retries</li>
+      <li>Owner dashboard for places, bookings, payments, customers and messages</li>
+      <li>Light and dark theme with smooth motion</li>
+    </ul></div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">Booking flow</span><h2>From browsing to confirmed in four steps</h2><p>Every step is checked on the server, so prices and availability can't be faked from the browser.</p></div>
+    <div class="steps">
+      <div class="step" data-n="01"><div class="num">📍</div><h3>Pick a place</h3><p>Search or filter by type. Each place shows its slot length, price and what to bring.</p></div>
+      <div class="step" data-n="02"><div class="num">📅</div><h3>Choose slots</h3><p>Select a day and up to 10 slots. Closed days and holidays are greyed out.</p></div>
+      <div class="step" data-n="03"><div class="num">💳</div><h3>Pay securely</h3><p>The slots are held for 10 minutes while the customer pays with Razorpay.</p></div>
+      <div class="step" data-n="04"><div class="num">✉️</div><h3>Confirmed</h3><p>The payment signature is verified, the booking is confirmed and an email goes out.</p></div>
+    </div>
+  </div></section>
+
+  <section class="alt"><div class="container">
+    <div class="section-head"><span class="eyebrow">What's inside</span><h2>Built for customers and for the owner</h2></div>
+    <div class="grid">
+      <div class="card hover feat"><div class="icon">🙋</div><h3>Customer side</h3>
+        <ul class="list"><li>Browse places and live availability without an account</li><li>Sign up, log in (email or Google) and reset passwords</li><li>Book several slots at once, across different dates</li><li>My bookings, booking details and profile</li><li>Raise a cancellation ticket with a reason</li></ul></div>
+      <div class="card hover feat"><div class="icon">🧑‍💼</div><h3>Owner dashboard</h3>
+        <ul class="list"><li>Create places with price, slot length, capacity and photo</li><li>Weekly opening hours, off days and blocked holiday dates</li><li>Bookings, payments, customers and contact messages</li><li>Approve or reject cancellations; refunds go through Razorpay</li><li>Live updates without refreshing</li></ul></div>
+      <div class="card hover feat"><div class="icon">⚙️</div><h3>Reliability</h3>
+        <ul class="list"><li>Unique rule on place, time and seat stops double bookings</li><li>Idempotent payment confirmation, so retries never duplicate</li><li>Email outbox with retries and a scheduled cron job</li><li>Photos kept in a private Backblaze B2 bucket</li></ul></div>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">Security &amp; testing</span><h2>Money and data handled carefully</h2></div>
+    <div class="grid">
+      <div class="card hover feat"><div class="icon">🔐</div><h3>Payments</h3>
+        <ul class="list"><li>HMAC-SHA256 signature checks with constant-time comparison</li><li>Prices are only ever read from the server</li><li>Webhook amount and currency are verified</li><li>Refunds are claimed atomically, so no double refunds</li></ul></div>
+      <div class="card hover feat"><div class="icon">🛡️</div><h3>Account &amp; access</h3>
+        <ul class="list"><li>bcrypt passwords, constant-time login and rate limits</li><li>Role checks on every page and every API route</li><li>CSRF origin checks and safe redirects</li><li>Password reset tokens stored only as hashes</li></ul></div>
+      <div class="card hover feat"><div class="icon">🧪</div><h3>Tests</h3>
+        <ul class="list"><li>Unit tests for slots, policy and payment signatures</li><li>Integration tests for the booking engine and API routes</li><li>Playwright end-to-end tests for booking, auth and owner flows</li><li>Accessibility and responsive checks</li></ul></div>
+    </div>
+  </div></section>
+
+  <section class="alt"><div class="container">
+    <div class="section-head"><span class="eyebrow">Screens</span><h2>A look around</h2></div>
+    <div class="grid two">
+      <a class="browser shot-link reveal" href="https://appointment-system-topaz.vercel.app/places" target="_blank" rel="noopener" style="display:block" aria-label="Open the places page"><div class="bar"><i></i><i></i><i></i><span>/places</span></div><div class="shot-wrap"><img src="../../assets/img/projects/slotly-places.jpg" alt="Slotly places list with search and category filters" loading="lazy"><span class="visit">Open ↗</span></div></a>
+      <a class="browser shot-link reveal" href="https://appointment-system-topaz.vercel.app/places/city-care-general-physician" target="_blank" rel="noopener" style="display:block" aria-label="Open a place page"><div class="bar"><i></i><i></i><i></i><span>/places/city-care-general-physician</span></div><div class="shot-wrap"><img src="../../assets/img/projects/slotly-booking.jpg" alt="Slotly place detail page with opening hours" loading="lazy"><span class="visit">Open ↗</span></div></a>
+    </div>
+  </div></section>
+
+  <section><div class="container">
+    <div class="section-head"><span class="eyebrow">Tech stack</span><h2>What it's built with</h2></div>
+    <div class="tags" style="margin:0"><span class="tag">Next.js 15</span><span class="tag">React 19</span><span class="tag">TypeScript</span><span class="tag">Tailwind CSS 4</span><span class="tag">Framer Motion</span><span class="tag">Prisma</span><span class="tag">PostgreSQL</span><span class="tag">NextAuth</span><span class="tag">Razorpay</span><span class="tag">Zod</span><span class="tag">Server-Sent Events</span><span class="tag">Nodemailer</span><span class="tag">Backblaze B2</span><span class="tag">Vitest</span><span class="tag">Playwright</span><span class="tag">Vercel</span></div>
+  </div></section>
+
+  <section><div class="container"><div class="cta reveal"><h2>Need a booking system?</h2><p>I build booking, scheduling and payment-driven apps for clinics, venues, studios and service businesses.</p><a class="btn" href="../../contact/">Discuss your project →</a></div></div></section>
+</main>
+<script src="../../assets/js/main.js"></script>
+</body>
+</html>
