@@ -98,7 +98,7 @@ const link = (href, text, extra = "") => `<a href="${root}${href || ""}${root ||
 
 /* ---------- Header ---------- */
 document.body.insertAdjacentHTML("afterbegin", `
-<header class="site"><div class="container">
+<header class="site" id="site-header"><div class="bar">
   ${logo("lg-h")}
   <nav class="main">
     <div class="links" id="links">
@@ -106,14 +106,16 @@ document.body.insertAdjacentHTML("afterbegin", `
       ${MENUS.map(menuHTML).join("")}
       <a class="btn mobile-cta" href="${root}contact/">Let's talk</a>
     </div>
+  </nav>
+  <div class="head-actions">
     <a class="btn" href="${root}contact/">Let's talk</a>
     <button class="theme-toggle" id="theme-btn" aria-label="Toggle light and dark theme">
       <svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
       <svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3 7 7 0 0 0 21 12.8z"/></svg>
       <span class="ripple"></span>
     </button>
-    <button class="menu-btn" id="menu-btn" aria-label="Menu"><span></span></button>
-  </nav>
+    <button class="menu-btn" id="menu-btn" aria-label="Menu" aria-expanded="false"><span></span></button>
+  </div>
 </div></header>`);
 
 /* ---------- Footer ---------- */
@@ -183,14 +185,14 @@ dropdowns.forEach((dd) => {
     e.stopPropagation();
     closeAll(dd); setOpen(dd, !dd.classList.contains("open"));
   });
-  dd.addEventListener("mouseenter", () => matchMedia("(min-width: 901px)").matches && closeAll(dd));
+  dd.addEventListener("mouseenter", () => matchMedia("(min-width: 56.3125em)").matches && closeAll(dd));
 });
 document.addEventListener("click", (e) => { if (!e.target.closest(".dropdown")) closeAll(); });
 document.addEventListener("keydown", (e) => e.key === "Escape" && closeAll());
 // On mobile each category card is collapsible (accordion); on desktop they sit open in a row
 document.querySelectorAll(".group-head").forEach((h) =>
   h.addEventListener("click", () => {
-    if (!matchMedia("(max-width: 900px)").matches) return;
+    if (!matchMedia("(max-width: 56.25em)").matches) return;
     const g = h.parentElement, open = !g.classList.contains("open");
     g.parentElement.querySelectorAll(".menu-group").forEach((x) => x.classList.remove("open"));
     g.classList.toggle("open", open);
@@ -199,7 +201,45 @@ document.querySelectorAll(".group-head").forEach((h) =>
 
 /* ---------- Mobile menu / back to top ---------- */
 const menuBtn = document.getElementById("menu-btn"), links = document.getElementById("links");
-menuBtn.onclick = () => { menuBtn.classList.toggle("open"); links.classList.toggle("open"); };
+menuBtn.onclick = () => {
+  const open = menuBtn.classList.toggle("open");
+  links.classList.toggle("open", open);
+  menuBtn.setAttribute("aria-expanded", open);
+};
+
+/* ---------- Floating navbar: shrinks and gains depth once the page is scrolled (it always stays visible) ---------- */
+const siteHeader = document.getElementById("site-header");
+let headTick = false;
+const headScroll = () => { headTick = false; siteHeader.classList.toggle("scrolled", scrollY > 16); };
+addEventListener("scroll", () => { if (!headTick) { headTick = true; requestAnimationFrame(headScroll); } }, { passive: true });
+headScroll();
+
+/* Sliding highlight that follows the pointer across the links and rests on the current page (desktop) */
+const pill = document.createElement("span");
+pill.className = "nav-pill"; pill.setAttribute("aria-hidden", "true");
+links.prepend(pill);
+const navItems = [...links.querySelectorAll("a.link, .more-btn")];
+const desktopNav = () => matchMedia("(min-width: 56.3125em)").matches;
+const placePill = (el, instant) => {
+  if (!el || !desktopNav()) { pill.style.opacity = 0; return; }
+  if (instant) pill.style.transition = "none";
+  pill.style.width = el.offsetWidth + "px";
+  pill.style.height = el.offsetHeight + "px";
+  pill.style.transform = `translate(${el.offsetLeft}px, -50%)`;
+  pill.style.opacity = 1;
+  if (instant) { void pill.offsetWidth; pill.style.transition = ""; }
+};
+const restPill = (instant) => placePill(links.querySelector("a.link.active, .more-btn.active"), instant);
+navItems.forEach((el) => {
+  el.addEventListener("mouseenter", () => placePill(el));
+  el.addEventListener("focus", () => placePill(el));
+});
+links.addEventListener("mouseleave", () => restPill());
+links.addEventListener("focusout", () => restPill());
+restPill(true);
+addEventListener("resize", () => restPill(true));
+addEventListener("load", () => restPill(true));
+document.fonts?.ready.then(() => restPill(true));
 document.getElementById("to-top").onclick = () => scrollTo({ top: 0, behavior: "smooth" });
 
 /* ---------- Fill placeholders: <span data-site="email"> ---------- */
